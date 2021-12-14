@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
 import { Employee } from './employee.model';
+
 @Injectable()
 export class EmployeeService {
   selectedEmployee: Employee;

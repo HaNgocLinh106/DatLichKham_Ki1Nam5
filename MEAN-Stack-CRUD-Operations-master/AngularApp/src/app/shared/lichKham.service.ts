@@ -8,8 +8,8 @@ import { LichKham } from './lichKham.model';
 @Injectable()
 export class LichKhamService {
   selectedLichKham: LichKham;
-  lichKhams: LichKham[];
-  readonly baseURL = 'http://localhost:3000/dsLichKham';
+  dsBSLichKham: LichKham[];
+  readonly baseURL = 'http://localhost:3000/dsBSLichKham';
 
   constructor(private http: HttpClient) { }
 

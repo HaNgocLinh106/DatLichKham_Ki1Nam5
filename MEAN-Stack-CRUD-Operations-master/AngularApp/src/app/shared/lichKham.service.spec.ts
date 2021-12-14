@@ -1,3 +1,4 @@
+import { BacSiService } from './BacSi.service';
 import { TestBed, inject } from '@angular/core/testing';
 
 import { LichKhamService } from './lichKham.service';
@@ -5,7 +6,7 @@ import { LichKhamService } from './lichKham.service';
 describe('LichKhamService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [LichKhamService]
+      providers: [LichKhamService, BacSiService]
     });
   });
 

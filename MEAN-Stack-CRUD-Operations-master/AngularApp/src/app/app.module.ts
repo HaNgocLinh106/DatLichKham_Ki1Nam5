@@ -1,3 +1,5 @@
+import { BSDichVuComponent } from './BSDichVu/BSDichVu.component';
+import { BacSiComponent } from './BacSi/BacSi.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -12,7 +14,9 @@ import { LichKhamComponent } from './LichKham/lichKham.component';
   declarations: [
     AppComponent,
     EmployeeComponent,
-    LichKhamComponent
+    LichKhamComponent,
+    BacSiComponent,
+    BSDichVuComponent
   ],
   imports: [
     BrowserModule,

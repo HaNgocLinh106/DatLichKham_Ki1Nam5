@@ -1,64 +1,80 @@
-<!-- <div class="row">
+<div class="row">
     <div class="col s12">
         <div class="card">
             <div class="card-content white-text">
                 <div class="row">
                     <div class="col s5">
-                        <form #employeeForm="ngForm" (ngSubmit)="onSubmit(employeeForm)">
-                            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="employeeService.selectedEmployee._id">
-                            <div class="row">
+                        <form id="lichKhamForm" #lichKhamForm="ngForm" (ngSubmit)="onSubmit(lichKhamForm)">
+                            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="lichKhamService.selectedLichKham._id">
+                            <!-- <div class="row">
                                 <div class="input-field col s12">
-                                    <input type="text" name="name" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.name" placeholder="Enter full name" required>
-                                    <label>Name :
-                      <label class="red-text">*</label>
+                                    <input type="text" name="maLichKham" #name="ngModel" [(ngModel)]="lichKhamService.selectedLichKham.maLichKham" placeholder="Enter full name" required>
+                                    <label>Mã lịch khám :
+                                    <label class="red-text">*</label>
                                     </label>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="row">
+                                <label class="label-gio">Mã bác sĩ :<span class="red-text"> *</span></label>
                                 <div class="input-field col s12">
-                                    <input type="text" name="position" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.position" placeholder="Eg : Snr. Developer">
-                                    <label>Position :</label>
+                                    <select name="maBacSi" [(ngModel)]="lichKhamService.selectedLichKham.maBacSi" required (change)="changeOptionDoctor(lichKhamService.selectedLichKham.maBacSi)">
+                                        <option *ngFor=" let BacSi of BacSiService.BacSis"  value="{{BacSi.MaBacSi}}">Mã: {{BacSi.MaBacSi}} - {{BacSi.TenBacSi}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row" style="margin: 0; height: 0;">
+                                <div class="input-field col s12">
+                                    <input type="hidden" name="tenBacSi" #name="ngModel" [(ngModel)]="lichKhamService.selectedLichKham.tenBacSi">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input type="text" name="office" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.office" placeholder="Enter office location">
-                                    <label>Office :</label>
+                                    <input type="date" name="ngay" #name="ngModel" [(ngModel)]="lichKhamService.selectedLichKham.ngay" placeholder="Chọn ngày khám" required>
+                                    <label>Ngày :<span class="red-text"> *</span></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="label-gio">Giờ :<span class="red-text"> *</span></label>
+                                <div class="input-field col s12">
+                                    <select name="gio" [(ngModel)]="lichKhamService.selectedLichKham.gio" required>
+                                        <option *ngFor=" let gio of danhSachGioKham" value="{{gio.value}}">{{gio.value}}</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input type="text" name="salary" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.salary" placeholder="Salary per annum">
-                                    <label>Salary :</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <button class="btn btn-custom right" type="button" (click)="resetForm(employeeForm)">Reset</button>
-                                    <button class="btn btn-custom right" type="submit" [disabled]="!employeeForm.valid">Submit</button>
+                                    <button class="btn btn-custom right" type="button" (click)="resetForm(lichKhamForm)">Reset</button>
+                                    <button class="btn btn-custom right" type="submit" [disabled]="!lichKhamForm.valid">Submit</button>
                                 </div>
                             </div>
                         </form>
                     </div>
                     <div class="col s7">
+                        <!-- <test></test> -->
+
+                        <!-- <test></test> -->
                         <table class="responsive-table highlight">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
+                                    <!-- <th>Mã lịch khám</th> -->
+                                    <th>Mã Bác sĩ</th>
+                                    <th>Tên Bác sĩ</th>
+                                    <th>Ngày</th>
+                                    <th>Giờ</th>
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tr *ngFor="let emp of employeeService.employees">
-                                <td>{{emp.name}}</td>
-                                <td>{{emp.position}}</td>
-                                <td>{{emp.office}}</td>
+                            <tr *ngFor="let emp of lichKhamService.dsBSLichKham">
+                                <!-- <td>{{emp.maLichKham}}</td> -->
+                                <td>{{emp.maBacSi}}</td>
+                                <td>{{emp.tenBacSi}}</td>
+                                <td>{{emp.ngay}}</td>
+                                <td>{{emp.gio}}</td>
                                 <td>
                                     <a class="action-btn" (click)="onEdit(emp)">
                                         <i class="material-icons">edit</i>
                                     </a>
-                                    <a class="action-btn" (click)="onDelete(emp._id,employeeForm)">
+                                    <a class="action-btn" (click)="onDelete(emp._id,lichKhamForm)">
                                         <i class="material-icons">delete</i>
                                     </a>
                                 </td>
@@ -70,4 +86,4 @@
         </div>
     </div>
 
-</div> -->
+</div>

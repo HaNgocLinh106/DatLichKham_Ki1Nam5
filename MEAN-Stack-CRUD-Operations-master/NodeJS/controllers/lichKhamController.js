@@ -4,10 +4,10 @@ var ObjectId = require('mongoose').Types.ObjectId;
 
 var { LichKham } = require('../models/lichKham');
 
-// => localhost:3000/dsLichKham/
+// => localhost:3000/dsBSLichKham/
 router.get('/', (req, res) => {
     LichKham.find((err, docs) => {
-        if (!err) { res.send(docs); } else { console.log('Error in Retriving DSLichKham :' + JSON.stringify(err, undefined, 2)); }
+        if (!err) { res.send(docs); } else { console.log('Error in Retriving DSBSLichKham :' + JSON.stringify(err, undefined, 2)); }
     });
 });
 
@@ -24,6 +24,7 @@ router.post('/', (req, res) => {
     var emp = new LichKham({
         maLichKham: req.body.maLichKham,
         maBacSi: req.body.maBacSi,
+        tenBacSi: req.body.tenBacSi,
         ngay: req.body.ngay,
         gio: req.body.gio,
     });
@@ -39,6 +40,7 @@ router.put('/:id', (req, res) => {
     var emp = {
         maLichKham: req.body.maLichKham,
         maBacSi: req.body.maBacSi,
+        tenBacSi: req.body.tenBacSi,
         ngay: req.body.ngay,
         gio: req.body.gio,
     };
