@@ -70,12 +70,11 @@ _BacSi: any;
   ]
   ngOnInit() {
     this.resetForm();
-    this.resetForm();
     this.refreshLichKhamList();
-    this.refreshBacSiList();
+    this.getBacSiList();
 
   }
-  refreshBacSiList() {
+  getBacSiList() {
     this.BacSiService.getBacSiList().subscribe((res) => {
       this.BacSiService.BacSis = res as BacSi[];
     });
@@ -94,7 +93,7 @@ _BacSi: any;
   }
 
   onSubmit(form: NgForm) {
-    if (form.value._id == "") {
+    if (form.value._id == "" || form.value._id == null) {
       this.lichKhamService.postLichKham(form.value).subscribe((res) => {
         this.resetForm(form);
         this.refreshLichKhamList();

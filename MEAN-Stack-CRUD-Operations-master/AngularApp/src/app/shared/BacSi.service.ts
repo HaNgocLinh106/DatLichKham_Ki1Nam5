@@ -19,6 +19,7 @@ export class BacSiService {
   }
 
   getBacSiList() {
+    console.log("b=", this.http.get(this.baseURL));
     return this.http.get(this.baseURL);
   }
 

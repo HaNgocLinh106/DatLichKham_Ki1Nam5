@@ -19,7 +19,6 @@ export class DichVuService {
   }
 
   getDichVuList() {
-    debugger
     return this.http.get(this.baseURL);
   }
 

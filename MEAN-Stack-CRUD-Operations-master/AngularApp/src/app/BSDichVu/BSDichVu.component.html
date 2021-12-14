@@ -9,12 +9,20 @@
                             <div class="row">
                                 <label class="label-gio">Mã dịch vụ :<span class="red-text"> *</span></label>
                                 <div class="input-field col s12">
-                                    <select name="maDichVu" [(ngModel)]="BSDichVuService.selectedBSDichVu.maDichVu" required (change)="changeOptionDoctor(BSDichVuService.selectedBSDichVu.maDichVu)">
-                                        <option *ngFor=" let DichVu of DichVuService.dsBSDichVu"  value="{{DichVu.maDichVu}}">Mã: {{DichVu.maDichVu}} - {{DichVu.tenDichVu}}</option>
+                                    <select name="maDichVu" [(ngModel)]="BSDichVuService.selectedBSDichVu.maDichVu" required (change)="changeOptionService(BSDichVuService.selectedBSDichVu.maDichVu)">
+                                        <option *ngFor=" let DichVu of DichVuService.dsDichVu"  value="{{DichVu.maDichVu}}">Mã: {{DichVu.maDichVu}} - {{DichVu.tenDichVu}}</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="row">
+                                <label class="label-gio">Mã bác sĩ :<span class="red-text"> *</span></label>
+                                <div class="input-field col s12">
+                                    <select name="maBacSi" [(ngModel)]="BSDichVuService.selectedBSDichVu.maBacSi" required (change)="changeOptionDoctor(BSDichVuService.selectedBSDichVu.maBacSi)">
+                                        <option *ngFor=" let BacSi of BacSiService.BacSis" value="{{BacSi.MaBacSi}}">Mã: {{BacSi.MaBacSi}} - {{BacSi.TenBacSi}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- <div class="row">
                                 <div class="input-field col s12">
                                     <input type="text" name="MaDichVu" #name="ngModel" [(ngModel)]="BSDichVuService.selectedBSDichVu.MaDichVu" placeholder="Nhập chính xác Mã dịch vụ" required>
                                     <label>Mã dịch vụ :
@@ -26,23 +34,20 @@
                                 <div class="input-field col s12">
                                     <input type="text" name="MaBacSi" #name="ngModel" [(ngModel)]="BSDichVuService.selectedBSDichVu.MaBacSi" placeholder="" required>
                                     <label>Mã Bác Sĩ :
-                      <label class="red-text">*</label>
+                                        <label class="red-text">*</label>
                                     </label>
                                 </div>
-                            </div>
+                            </div> -->
+
+                            <input type="hidden" name="tenBacSi" #name="ngModel" [(ngModel)]="BSDichVuService.selectedBSDichVu.tenBacSi" placeholder="">
+
+                            <input type="hidden" name="tenDichVu" #name="ngModel" [(ngModel)]="BSDichVuService.selectedBSDichVu.tenDichVu" placeholder="">
+
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input type="text" name="TenDichVu" #name="ngModel" [(ngModel)]="BSDichVuService.selectedBSDichVu.TenDichVu" placeholder="" required>
-                                    <label>Tên dịch vụ :
-                      <label class="red-text">*</label>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <input type="number" name="DonGiaDichVu" #name="ngModel" [(ngModel)]="BSDichVuService.selectedBSDichVu.DonGiaDichVu" placeholder="" required>
+                                    <input type="number" name="donGiaDichVu" #donGiaDichVu="ngModel" [(ngModel)]="BSDichVuService.selectedBSDichVu.donGiaDichVu" placeholder="" required>
                                     <label>Đơn giá dịch vụ :
-                      <label class="red-text">*</label>
+                                    <label class="red-text">*</label>
                                     </label>
                                 </div>
                             </div>
@@ -58,19 +63,16 @@
                         <table class="responsive-table highlight">
                             <thead>
                                 <tr>
-                                    <th>Mã dịch vụ</th>
-                                    <th>Mã bác sĩ</th>
-                                    <th>Tên dịch vụ</th>
-                                    <th>Đơn giá</th>
-
+                                    <th>Dịch vụ</th>
+                                    <th>Bác sĩ</th>
+                                    <th>Phí dịch vụ</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tr *ngFor="let BSDV of BSDichVuService.dsBSDichVu">
-                                <td>{{BSDV.MaDichVu}}</td>
-                                <td>{{BSDV.MaBacSi}}</td>
-                                <td>{{BSDV.TenDichVu}}</td>
-                                <td>{{BSDV.DonGiaDichVu}}</td>
+                                <td>{{BSDV.maDichVu}} - {{BSDV.tenDichVu}}</td>
+                                <td>{{BSDV.maBacSi}} - {{BSDV.tenBacSi}}</td>
+                                <td>{{BSDV.donGiaDichVu}}</td>
                                 <td>
                                     <a class="action-btn" (click)="onEdit(BSDV)">
                                         <i class="material-icons">edit</i>
