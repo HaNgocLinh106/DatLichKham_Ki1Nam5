@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 var BSDichVu = mongoose.model('BSDichVu', {
-    MaDichVu: { type: String },
-    MaBacSi: { type: String },
-    TenBacSi: { type: String },
-    TenDichVu: { type: String },
-    DonGiaDichVu: { type: Number }
+    maDichVu: { type: String },
+    maBacSi: { type: String },
+    tenBacSi: { type: String },
+    tenDichVu: { type: String },
+    donGiaDichVu: { type: Number }
 });
 
 module.exports = { BSDichVu };

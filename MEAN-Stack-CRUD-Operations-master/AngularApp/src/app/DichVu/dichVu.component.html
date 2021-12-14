@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="col s12">
+        <div class="card">
+            <div class="card-content white-text">
+                <div class="row">
+                    <div class="col s5">
+                        <form #dichVuForm="ngForm" (ngSubmit)="onSubmit(dichVuForm)">
+                            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="dichVuService.selectedDichVu._id">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" name="maDichVu" #maDichVu="ngModel" [(ngModel)]="dichVuService.selectedDichVu.maDichVu" placeholder="Nhập mã dịch vụ" required>
+                                    <label>Mã dịch vụ :
+                                    <label class="red-text">*</label>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" name="tenDichVu" #tenDichVu="ngModel" [(ngModel)]="dichVuService.selectedDichVu.tenDichVu" placeholder="Nhập tên dịch vụ">
+                                    <label>Tên dịch vụ :</label>
+                                </div>
+                            </div>
+                            <!-- <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" name="office" #name="ngModel" [(ngModel)]="dichVuService.selectedDichVu.office" placeholder="Enter office location">
+                                    <label>Office :</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" name="salary" #name="ngModel" [(ngModel)]="dichVuService.selectedDichVu.salary" placeholder="Salary per annum">
+                                    <label>Salary :</label>
+                                </div>
+                            </div> -->
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <button class="btn btn-custom right" type="button" (click)="resetForm(dichVuForm)">Reset</button>
+                                    <button class="btn btn-custom right" type="submit" [disabled]="!dichVuForm.valid">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col s7">
+                        <table class="responsive-table highlight">
+                            <thead>
+                                <tr>
+                                    <th>Mã dịch vụ</th>
+                                    <th>Tên dịch vụ</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tr *ngFor="let emp of dichVuService.dsDichVu">
+                                <td>{{emp.maDichVu}}</td>
+                                <td>{{emp.tenDichVu}}</td>
+                                <td>
+                                    <a class="action-btn" (click)="onEdit(emp)">
+                                        <i class="material-icons">edit</i>
+                                    </a>
+                                    <a class="action-btn" (click)="onDelete(emp._id,dichVuForm)">
+                                        <i class="material-icons">delete</i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

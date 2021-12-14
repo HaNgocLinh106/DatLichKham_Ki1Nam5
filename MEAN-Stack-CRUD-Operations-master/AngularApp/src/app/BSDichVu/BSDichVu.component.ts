@@ -1,8 +1,11 @@
+import { DichVuService } from './../shared/dichVu.service';
+import { DichVuComponent } from './../DichVu/dichVu.component';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { BSDichVuService } from '../shared/BSDichVu.service';
 import { BSDichVu } from '../shared/BSDichVu.model';
+import { DichVu } from '../shared/dichVu.model';
 
 declare var M: any;
 
@@ -10,11 +13,13 @@ declare var M: any;
   selector: 'app-BSDichVu',
   templateUrl: './BSDichVu.component.html',
   styleUrls: ['./BSDichVu.component.css'],
-  providers: [BSDichVuService]
+  providers: [BSDichVuService, DichVuService]
 })
 export class BSDichVuComponent implements OnInit {
-
-  constructor(private BSDichVuService: BSDichVuService) { }
+  _DichVu: any;
+  constructor(
+    private BSDichVuService: BSDichVuService,
+    private DichVuService: DichVuService) { }
 
   ngOnInit() {
     this.resetForm();
@@ -26,11 +31,11 @@ export class BSDichVuComponent implements OnInit {
       form.reset();
     this.BSDichVuService.selectedBSDichVu = {
       _id: "",
-      MaDichVu: "",
-      MaBacSi: "",
-      TenDichVu: "",
-      TenBacSi: "",
-      DonGiaDichVu: null
+      maDichVu: "",
+      maBacSi: "",
+      tenDichVu: "",
+      tenBacSi: "",
+      donGiaDichVu: null
     }
   }
 
@@ -55,6 +60,10 @@ export class BSDichVuComponent implements OnInit {
     this.BSDichVuService.getBSDichVuList().subscribe((res) => {
       this.BSDichVuService.dsBSDichVu = res as BSDichVu[];
     });
+    debugger
+    this.DichVuService.getDichVuList().subscribe((res) =>{
+      this.DichVuService.dsDichVu = res as DichVu[];
+    })
   }
 
   onEdit(BSDV: BSDichVu) {
@@ -70,5 +79,11 @@ export class BSDichVuComponent implements OnInit {
       });
     }
   }
-
+  changeOptionDichVu(maDichVu?: string){
+    this._DichVu = this.DichVuService.dsDichVu.find( (t) => 
+       t.maDichVu == maDichVu
+     );
+     console.log(this._DichVu);
+     this.BSDichVuService.selectedBSDichVu.tenDichVu = this._DichVu.tenDichVu;
+   }
 }

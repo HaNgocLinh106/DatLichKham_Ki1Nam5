@@ -1,3 +1,4 @@
+import { DichVuComponent } from './DichVu/dichVu.component';
 import { BSDichVuComponent } from './BSDichVu/BSDichVu.component';
 import { BacSiComponent } from './BacSi/BacSi.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,7 +17,8 @@ import { LichKhamComponent } from './LichKham/lichKham.component';
     EmployeeComponent,
     LichKhamComponent,
     BacSiComponent,
-    BSDichVuComponent
+    BSDichVuComponent,
+    DichVuComponent
   ],
   imports: [
     BrowserModule,

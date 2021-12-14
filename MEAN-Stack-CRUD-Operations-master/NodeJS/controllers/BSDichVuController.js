@@ -22,11 +22,11 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
     var emp = new BSDichVu({
-        MaDichVu: req.body.MaDichVu,
-        MaBacSi: req.body.MaBacSi,
-        TenBacSi: req.body.TenBacSi,
-        TenDichVu: req.body.TenDichVu,
-        DonGiaDichVu: req.body.DonGiaDichVu,
+        maDichVu: req.body.maDichVu,
+        maBacSi: req.body.maBacSi,
+        tenBacSi: req.body.tenBacSi,
+        tenDichVu: req.body.tenDichVu,
+        donGiaDichVu: req.body.donGiaDichVu,
     });
     emp.save((err, doc) => {
         if (!err) { res.send(doc); } else { console.log('Error in BSDichVu Save :' + JSON.stringify(err, undefined, 2)); }
@@ -38,11 +38,11 @@ router.put('/:id', (req, res) => {
         return res.status(400).send(`No record with given id : ${req.params.id}`);
 
     var emp = {
-        MaDichVu: req.body.MaDichVu,
-        MaBacSi: req.body.MaBacSi,
-        TenBacSi: req.body.TenBacSi,
-        TenDichVu: req.body.TenDichVu,
-        DonGiaDichVu: req.body.DonGiaDichVu,
+        maDichVu: req.body.maDichVu,
+        maBacSi: req.body.maBacSi,
+        tenBacSi: req.body.tenBacSi,
+        tenDichVu: req.body.tenDichVu,
+        donGiaDichVu: req.body.donGiaDichVu,
     };
     BSDichVu.findByIdAndUpdate(req.params.id, { $set: emp }, { new: true }, (err, doc) => {
         if (!err) { res.send(doc); } else { console.log('Error in BSDichVu Update :' + JSON.stringify(err, undefined, 2)); }

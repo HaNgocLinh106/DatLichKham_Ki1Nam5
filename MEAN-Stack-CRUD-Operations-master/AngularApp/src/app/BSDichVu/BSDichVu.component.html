@@ -7,10 +7,18 @@
                         <form #BSDichVuForm="ngForm" (ngSubmit)="onSubmit(BSDichVuForm)">
                             <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="BSDichVuService.selectedBSDichVu._id">
                             <div class="row">
+                                <label class="label-gio">Mã dịch vụ :<span class="red-text"> *</span></label>
+                                <div class="input-field col s12">
+                                    <select name="maDichVu" [(ngModel)]="BSDichVuService.selectedBSDichVu.maDichVu" required (change)="changeOptionDoctor(BSDichVuService.selectedBSDichVu.maDichVu)">
+                                        <option *ngFor=" let DichVu of DichVuService.dsBSDichVu"  value="{{DichVu.maDichVu}}">Mã: {{DichVu.maDichVu}} - {{DichVu.tenDichVu}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="input-field col s12">
                                     <input type="text" name="MaDichVu" #name="ngModel" [(ngModel)]="BSDichVuService.selectedBSDichVu.MaDichVu" placeholder="Nhập chính xác Mã dịch vụ" required>
                                     <label>Mã dịch vụ :
-                        <label class="red-text">*</label>
+                                    <label class="red-text">*</label>
                                     </label>
                                 </div>
                             </div>
